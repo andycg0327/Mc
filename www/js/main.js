@@ -1,5 +1,5 @@
 myApp.onPageInit('main', function (page) {
-    vue = new Vue({
+    vue_main = new Vue({
         el: page.container.children[1],
         data: {
             moment: moment,
@@ -17,6 +17,7 @@ myApp.onPageInit('main', function (page) {
                     },{
                         text: '立即兌換',
                         onClick: function () {
+                            globalData.used[page.query.index] = 1;
                             // self.countDown = moment(120000);
                             setInterval(function() { self.countDown -= 1000; }, 1000);
                         }

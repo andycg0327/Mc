@@ -1,3 +1,7 @@
+var globalData = {
+    used: [0, 0, 0, 0]
+};
+
 moment.tz.setDefault("Asia/Taipei");
 moment.locale('zh-tw');
 
@@ -31,12 +35,16 @@ myApp.onPageInit('index', function (page) {
     vue = new Vue({
         el: '[data-page="index"].page .page-content',
 		data: {
-      moment: moment,
-      timestamp: moment().format('YYYY 年 M 月 D 日')
-    }
+            moment: moment,
+            timestamp: moment().format('YYYY 年 M 月 D 日'),
+            used: globalData.used
+        }
     });
 }).trigger();
 
+myApp.onPageBack('index', function (page) {
+    vue.used = globalData.used;
+});
 
 // Handle Cordova Device Ready Event
 $(document).on('deviceready', function() {
@@ -56,6 +64,9 @@ $(document).on('deviceready', function() {
                 }]
             });
         } else    // 上一頁
-            mainView.router.back();
+            mainView.router.back({
+                url: 'index.html',
+                force: true
+            });
     }, false);
 });
