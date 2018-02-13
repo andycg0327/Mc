@@ -56,6 +56,6 @@ $(document).on('deviceready', function() {
                 }]
             });
         } else    // 上一頁
-            backFormCheck();
+            mainView.router.back();
     }, false);
 });

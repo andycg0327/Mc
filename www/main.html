@@ -17,7 +17,7 @@
       <div :style="'background-image:url(img/' + title + '_.png); background-size: cover; background-position: center; height:100%; padding: 0 5px'">
         <button class="button" style="width: 100%; height:60px; left:0; bottom: 10px; position:absolute" @click="openConfirm()"></button>
         <div style="background-color: #f5aa0a; width: 100%; height:80px; left:0; bottom: 0; position:absolute; text-align: center; color: #FFF" v-if="countDown < 120000">
-            <h1 style="margin-top: 1em"><img src="img/clock.png" style="height:32px; vertical-align:middle" /> 優惠倒數 {{moment(countDown).format('mm : ss')}}</h1>
+            <h1 style="margin-top: 20px; margin-bottom: 0"><img src="img/clock.png" style="height:32px; vertical-align:middle" /> 優惠倒數 {{moment(countDown).format('mm : ss')}}</h1>
         </div>
       </div>
     </div>
