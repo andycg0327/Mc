@@ -42,13 +42,7 @@ myApp.onPageInit('index', function (page) {
 $(document).on('deviceready', function() {
     // Android 返回鍵
     document.addEventListener("backbutton", function() {
-        if ($('body').hasClass('with-panel-left-cover'))    // Panel
-            myApp.closePanel();
-        else if (calendarPicker && calendarPicker.opened) // 日曆
-            calendarPicker.close();
-        else if ($('.modal-in').length > 0)    // Modal
-            myApp.closeModal();
-        else if(mainView.activePage.name == 'main') { // 已在首頁
+        if(mainView.activePage.name == 'index') { // 已在首頁
             myApp.modal({
                 title: '訊息',
                 text: '確定結束應用程式嗎？',
