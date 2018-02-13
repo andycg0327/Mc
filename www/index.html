@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html ng-app="EMS">
+<head>
+    <!--
+      Customize this policy to fit your own app's needs. For more guidance, see:
+          https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+      Some notes:
+          * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+          * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+          * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+              * Enable inline JS: add 'unsafe-inline' to default-src
+      -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>麥當勞報報優惠券</title>
+    <link rel="stylesheet" href="./lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./lib/font-awesome-4.7.0/css/font-awesome-animation.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.5/js/swiper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment-with-locales.min.js"></script>
+    <script src="./lib/moment-timezone-with-data.min.js"></script>
+    <script src="./lib/hammer/hammer.min.js"></script>
+    <script src="./lib/hammer/hammer-time.min.js"></script>
+    <!-- Flot -->
+    <script src="./lib/flot/jquery.flot.js"></script>
+    <script src="./lib/flot/jquery.flot.resize.min.js"></script>
+    <script src="./lib/flot/jquery.flot.time.min.js"></script>
+    <script src="./lib/flot/jquery.flot.selection.min.js"></script>
+    <script src="./lib/flot/jquery.flot.axislabels.js"></script>
+    <script src="./lib/flot/jquery.flot.crosshair.js"></script>
+    <script src="./lib/flot/jquery.flot.hiddengraphs.js"></script>
+    <script src="./lib/flot/jquery.flot.dashes.js"></script>
+    <script src="./lib/flot/jquery.flot.categories.js"></script>
+    <script src="./lib/flot/jquery.flot.valuelabels.js"></script>
+    <script src="./lib/flot/jquery.flot.navigate.min.js"></script>
+    <script src="./lib/flot/jquery.flot.smartwidget.js"></script>
+    <!-- <script src="./lib/flot/jquery.flot.touch.js"></script> -->
+</head>
+
+<body class="theme-red">
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+  
+    <!-- Views -->
+    <div class="views">
+        <div class="view view-main">
+            <div class="pages">
+                <div data-page="index" class="page">
+                  <div class="navbar">
+                    <div class="navbar-inner sliding">
+                      <div class="left">
+                        <a class="link back">
+                          <i class="icon icon-back"></i>
+                          <span class="ios-only"></span>
+                        </a>
+                      </div>
+                      <div class="title">優惠券</div>
+                      <div class="right"><h6>使用說明　</h6></div>
+                    </div>
+                  </div>
+                  <div class="toolbar tabbar-labels">
+                      <div class="toolbar-inner" style="background-image:url(img/toolbar.png); background-size: cover; background-position: center;">
+                      </div>
+                  </div>
+                  <div class="page-content" style="padding: 55px 0">
+                    <div class="card demo-card-header-pic">
+                      <a href="main.html?title=無骨雞腿排">
+                        <div class="card-header" style="background-image:url(img/無骨雞腿排.png)"></div>
+                        <div class="card-content card-content-padding">
+                          期限：{{moment().add(3, 'days').format('YYYY 年 M 月 D 日')}} 尚餘：{{moment(moment().add(3, 'days').format('YYYY-MM-DD')).diff(moment(), 'day')}} 天 {{moment(moment().add(1, 'days').format('YYYY-MM-DD')).diff(moment(), 'hour')}} 小時
+                        </div>
+                        <div class="card-footer"><h2>兌 換 優 惠</h2></div>
+                      </a>
+                    </div>
+                    <div class="card demo-card-header-pic">
+                      <a href="main.html?title=四塊雞塊">
+                        <div class="card-header" style="background-image:url(img/四塊雞塊.png)"></div>
+                        <div class="card-content card-content-padding">
+                          期限：{{moment().add(3, 'days').format('YYYY 年 M 月 D 日')}} 尚餘：{{moment(moment().add(3, 'days').format('YYYY-MM-DD')).diff(moment(), 'day')}} 天 {{moment(moment().add(1, 'days').format('YYYY-MM-DD')).diff(moment(), 'hour')}} 小時
+                        </div>
+                        <div class="card-footer"><h2>兌 換 優 惠</h2></div>
+                      </a>
+                    </div>
+                    <div class="card demo-card-header-pic">
+                      <a href="main.html?title=套餐勁辣香雞翅">
+                        <div class="card-header" style="background-image:url(img/套餐勁辣香雞翅.png)"></div>
+                        <div class="card-content card-content-padding">
+                          期限：{{moment().add(2, 'days').format('YYYY 年 M 月 D 日')}} 尚餘：{{moment(moment().add(2, 'days').format('YYYY-MM-DD')).diff(moment(), 'day')}} 天 {{moment(moment().add(1, 'days').format('YYYY-MM-DD')).diff(moment(), 'hour')}} 小時
+                        </div>
+                        <div class="card-footer"><h2>兌 換 優 惠</h2></div>
+                      </a>
+                    </div>
+                    <div class="card demo-card-header-pic">
+                      <a href="main.html?title=冰炫風">
+                        <div class="card-header" style="background-image:url(img/冰炫風.png)"></div>
+                        <div class="card-content card-content-padding">
+                          期限：{{moment().add(1, 'days').format('YYYY 年 M 月 D 日')}} 尚餘：{{moment(moment().add(1, 'days').format('YYYY-MM-DD')).diff(moment(), 'day')}} 天 {{moment(moment().add(1, 'days').format('YYYY-MM-DD')).diff(moment(), 'hour')}} 小時
+                        </div>
+                        <div class="card-footer"><h2>兌 換 優 惠</h2></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="js/my-app.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+</html>
