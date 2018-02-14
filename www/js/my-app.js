@@ -1,4 +1,5 @@
 var globalData = {
+    selection: [],
     used: [0, 0, 0, 0]
 };
 
@@ -37,10 +38,28 @@ myApp.onPageInit('index', function (page) {
 		data: {
             moment: moment,
             timestamp: moment().format('YYYY 年 M 月 D 日'),
+            selection: globalData.selection,
             used: globalData.used
         }
     });
+    new Vue({
+        el: '[data-page="index"].page .navbar',
+		data: {
+            selection: globalData.selection
+        },
+        watch: {
+            selection: function (val) {
+                globalData.selection = this.selection;
+                vue.selection = this.selection;
+            }
+        }
+    });
 }).trigger();
+
+myApp.onPageAfterAnimation('index', function (page) {
+}).trigger();
+
+setTimeout(function() { myApp.smartSelectOpen('[data-page="index"].page .navbar .smart-select'); }, 100);
 
 myApp.onPageBack('index', function (page) {
     vue.used = globalData.used;

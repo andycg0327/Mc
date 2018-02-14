@@ -48,7 +48,22 @@
                         </a>
                       </div>
                       <div class="title">優惠券</div>
-                      <div class="right"><h6>使用說明　</h6></div>
+                      <div class="right">
+                        <a href="#" class="link smart-select active" data-page-title="顯示設定" data-back-text="返回" data-back-on-select="true">
+                            <select v-model="selection" multiple maxlength="4">
+                                <optgroup label="低價購">
+                                    <option v-for="s in [['1_FrenchFries', '1元小薯條'], ['10_McChicken', '10元麥香雞'], ['40_BigMac', '40元飲品送大麥克'], ['40_SpicyChickenFilet', '40元飲品送勁辣雞腿堡']]" :value="s[0]">{{s[1]}}</option>
+                                </optgroup>
+                                <optgroup label="買一送一">
+                                    <option v-for="s in [['x2_GrilledChickenBurger', '板烤雞腿堡'], ['x2_SpicyChickenFilet', '勁辣雞腿堡'], ['x2_Nuggets', '四塊麥克雞塊'], ['x2_ShakaChicken', '無骨雞腿排'], ['x2_McFlurry', '冰炫風']]" :value="s[0]">{{s[1]}}</option>
+                                </optgroup>
+                                <optgroup label="套餐送">
+                                    <option v-for="s in [['Set_Nuggets', '四塊麥克雞塊'], ['Set_SpicyChickenWing', '勁辣香雞翅']]" :value="s[0]">{{s[1]}}</option>
+                                </optgroup>
+                            </select>
+                            <h6>使用說明</h6>
+                        </a>
+                    </div>
                     </div>
                   </div>
                   <div class="toolbar tabbar-labels">
@@ -56,13 +71,13 @@
                       </div>
                   </div>
                   <div class="page-content" style="padding: 55px 0">
-                    <div class="card demo-card-header-pic" v-for="(item, index) in ['ShakaChicken', 'Nuggets', 'SpicyChickenWing', 'McFlurry']">
+                    <div class="card demo-card-header-pic" v-for="(item, index) in selection">
                       <a :href="'main.html?title=' + item + '&index=' + index">
-                        <div class="card-header" :style="'background-image:url(img/' + item + '.png); padding:0'"></div>
+                        <div class="card-header" :style="'background-image:url(img/' + item + '.jpg); padding:0'"></div>
                         <div class="card-content card-content-padding">
                           期限：{{moment().add(Math.min(3 - index, 2), 'days').format('YYYY 年 M 月 D 日')}} 尚餘：{{moment(moment().add(Math.min(3 - index, 2), 'days').format('YYYY-MM-DD 23:59:59')).diff(moment(), 'day')}} 天 {{moment(moment().add(1, 'days').format('YYYY-MM-DD')).diff(moment(), 'hour') + 1}} 小時
                         </div>
-                        <div class="card-footer"><h2>{{used[index] ? '已 截 止' : '兌 換 優 惠'}}</h2></div>
+                        <div class="card-footer"><h2>{{used[index] ? '已 兌 換' : '兌 換 優 惠'}}</h2></div>
                       </a>
                       <div style="position:absolute; background-color: rgba(255, 255, 255, 0.6); left:0; right:0; top:0; bottom:0;" v-if="used[index]"></div>
                     </div>
