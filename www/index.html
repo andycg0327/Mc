@@ -50,15 +50,15 @@
                       <div class="title">優惠券</div>
                       <div class="right">
                         <a href="#" class="link smart-select active" data-page-title="顯示設定" data-back-text="返回" data-back-on-select="true">
-                            <select v-model="selection" multiple maxlength="4">
+                            <select v-model="selection" multiple maxlength="4" v-if="coupons">
                                 <optgroup label="低價購">
-                                    <option v-for="s in [['1_FrenchFries', '1元小薯條'], ['10_McChicken', '10元麥香雞'], ['40_BigMac', '40元飲品送大麥克'], ['40_SpicyChickenFilet', '40元飲品送勁辣雞腿堡']]" :value="s[0]">{{s[1]}}</option>
+                                    <option v-for="s in coupons[0]" :value="s[0]">{{s[1]}}</option>
                                 </optgroup>
                                 <optgroup label="買一送一">
-                                    <option v-for="s in [['x2_GrilledChickenBurger', '板烤雞腿堡'], ['x2_SpicyChickenFilet', '勁辣雞腿堡'], ['x2_Nuggets', '四塊麥克雞塊'], ['x2_ShakaChicken', '無骨雞腿排'], ['x2_McFlurry', '冰炫風']]" :value="s[0]">{{s[1]}}</option>
+                                    <option v-for="s in coupons[1]" :value="s[0]">{{s[1]}}</option>
                                 </optgroup>
                                 <optgroup label="套餐送">
-                                    <option v-for="s in [['Set_Nuggets', '四塊麥克雞塊'], ['Set_SpicyChickenWing', '勁辣香雞翅']]" :value="s[0]">{{s[1]}}</option>
+                                    <option v-for="s in coupons[2]" :value="s[0]">{{s[1]}}</option>
                                 </optgroup>
                             </select>
                             <h6>使用說明</h6>
@@ -88,6 +88,7 @@
     </div>
 </body>
 
+<script type="text/javascript" src="http://shh.tw/js/coupon.js"></script>
 <script type="text/javascript" src="js/my-app.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 

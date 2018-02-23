@@ -45,7 +45,8 @@ myApp.onPageInit('index', function (page) {
     new Vue({
         el: '[data-page="index"].page .navbar',
 		data: {
-            selection: globalData.selection
+            selection: globalData.selection,
+            coupons: coupons
         },
         watch: {
             selection: function (val) {
