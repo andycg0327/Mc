@@ -73,7 +73,7 @@
                   <div class="page-content" style="padding: 55px 0">
                     <div class="card demo-card-header-pic" v-for="(item, index) in selection">
                       <a :href="'main.html?title=' + item + '&index=' + index">
-                        <div class="card-header" :style="'background-image:url(img/' + item + '.jpg); padding:0'"></div>
+                        <div class="card-header" :style="'background-image:url(http://shh.tw/img/' + item + '.jpg); padding:0'"></div>
                         <div class="card-content card-content-padding">
                           期限：{{moment().add(Math.min(3 - index, 2), 'days').format('YYYY 年 M 月 D 日')}} 尚餘：{{moment(moment().add(Math.min(3 - index, 2), 'days').format('YYYY-MM-DD 23:59:59')).diff(moment(), 'day')}} 天 {{moment(moment().add(1, 'days').format('YYYY-MM-DD')).diff(moment(), 'hour') + 1}} 小時
                         </div>
