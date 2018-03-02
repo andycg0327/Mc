@@ -17,7 +17,8 @@ myApp.onPageInit('main', function (page) {
                     },{
                         text: '立即兌換',
                         onClick: function () {
-                            globalData.used[page.query.index] = 1;
+                            globalData.used[page.query.index] = moment().add(2, 'minute');
+                            self.countDown -= 1000;
                             // self.countDown = moment(120000);
                             setInterval(function() { self.countDown -= 1000; }, 1000);
                         }

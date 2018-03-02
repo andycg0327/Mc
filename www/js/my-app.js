@@ -33,18 +33,39 @@ var mainView = myApp.addView('.view-main', {
 });
 
 myApp.onPageInit('index', function (page) {
-    vue = new Vue({
+    var vue = new Vue({
         el: '[data-page="index"].page .page-content',
 		data: {
             moment: moment,
             timestamp: moment().format('YYYY 年 M 月 D 日'),
             selection: globalData.selection,
-            used: globalData.used
+            used: globalData.used,
+            now: moment()
+        },
+        mounted: function() {
+            var self = this;
+            setInterval(function() { self.now = moment(); }, 1000);
+            $('#tab1').on('tab:show', function () {
+                vue_nav.title = '優惠券';
+                vue_tool.index = 1;
+                // $(".toolbar-inner").css({'background-image': 'url(img/toolbar1.png)'});
+            });
+            $('#tab2').on('tab:show', function () {
+                vue_nav.title = '歡樂貼';
+                vue_tool.index = 2;
+                // $(".toolbar-inner").css({'background-image': 'url(img/toolbar2.png)'});
+            });
+            $('#tab3').on('tab:show', function () {
+                vue_nav.title = '獨享券';
+                vue_tool.index = 3;
+                // $(".toolbar-inner").css({'background-image': 'url(img/toolbar3.png)'});
+            });
         }
     });
-    new Vue({
+    var vue_nav = new Vue({
         el: '[data-page="index"].page .navbar',
 		data: {
+            title: '優惠券',
             selection: globalData.selection,
             coupons: coupons
         },
@@ -53,6 +74,12 @@ myApp.onPageInit('index', function (page) {
                 globalData.selection = this.selection;
                 vue.selection = this.selection;
             }
+        }
+    });
+    var vue_tool = new Vue({
+        el: '[data-page="index"].page .toolbar',
+		data: {
+            index: 1
         }
     });
 }).trigger();
@@ -70,7 +97,9 @@ myApp.onPageBack('index', function (page) {
 $(document).on('deviceready', function() {
     // Android 返回鍵
     document.addEventListener("backbutton", function() {
-        if(mainView.activePage.name == 'index') { // 已在首頁
+        if ($('.modal-in').length > 0)    // Modal
+            myApp.closeModal();
+        else if(mainView.activePage.name == 'index') { // 已在首頁
             myApp.modal({
                 title: '訊息',
                 text: '確定結束應用程式嗎？',
