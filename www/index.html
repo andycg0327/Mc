@@ -57,8 +57,17 @@
                                 <optgroup label="買一送一">
                                     <option v-for="s in coupons[1]" :value="s[0]">{{s[1]}}</option>
                                 </optgroup>
-                                <optgroup label="套餐送">
+                                <optgroup label="買A送B">
                                     <option v-for="s in coupons[2]" :value="s[0]">{{s[1]}}</option>
+                                </optgroup>
+                                <optgroup label="(過期) 低價購">
+                                    <option v-for="s in expired[0]" :value="s[0]">{{s[1]}}</option>
+                                </optgroup>
+                                <optgroup label="(過期) 買一送一">
+                                    <option v-for="s in expired[1]" :value="s[0]">{{s[1]}}</option>
+                                </optgroup>
+                                <optgroup label="(過期) 買A送B">
+                                    <option v-for="s in expired[2]" :value="s[0]">{{s[1]}}</option>
                                 </optgroup>
                             </select>
                             <h6>使用說明</h6>

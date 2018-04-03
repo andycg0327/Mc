@@ -67,13 +67,29 @@ myApp.onPageInit('index', function (page) {
 		data: {
             title: '優惠券',
             selection: globalData.selection,
-            coupons: coupons
+            coupons: coupons,
+            expired: expired,
+            ptt: ''
         },
         watch: {
             selection: function (val) {
                 globalData.selection = this.selection;
                 vue.selection = this.selection;
             }
+        },
+        mounted: function() {
+            var self = this;
+            $.ajax({
+                method: 'GET',
+                crossDomain: true,
+                url: 'https://www.ptt.cc/bbs/fastfood/M.1517141295.A.208.html',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                dataType: "html",
+                retryCount: 3,
+                success : function(response) {
+                    self.ptt = response;
+                }
+            });
         }
     });
     var vue_tool = new Vue({
