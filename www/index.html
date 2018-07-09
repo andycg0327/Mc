@@ -88,13 +88,13 @@
                           <div id="tab1" class="page-content tab active">
                             <div class="card demo-card-header-pic" v-for="(item, index) in selection">
                               <a :href="'main.html?title=' + item + '&index=' + index">
-                                <div class="card-header" :style="'background-image:url(https://drv.tw/~bluewhite0327@gmail.com/gd/www/Mc/img/' + item + '.jpg); padding:0'"></div>
+                                <div class="card-header" :style="'background-image:url(./img/' + item + '.jpg); padding:0'"></div>
                                 <div class="card-content card-content-padding">
                                   期限：{{moment().add(Math.min(3 - index, 2), 'days').format('YYYY 年 M 月 D 日')}} 尚餘：
                                   {{used[index] == 0 ? moment(moment().add(Math.min(3 - index, 2), 'days').format('YYYY-MM-DD 23:59:59')).diff(moment(), 'day') : 0}} 天 
                                   {{used[index] == 0 ? moment(moment().add(1, 'days').format('YYYY-MM-DD')).diff(moment(), 'hour') + 1 : 0}} 小時
                                 </div>
-                                <div class="card-footer"><h2><img src="./img/icons-alarm.png" style="vertical-align: text-top; height: 24px" v-if="used[index] != 0 && !used[index].isBefore(now)" /> {{used[index] != 0 ? (used[index].isBefore(now) ? '已 兌 換' : moment(used[index].diff(now, 'second') * 1000).format('mm : ss')) : '兌 換 優 惠'}}<img :src="'https://drv.tw/~bluewhite0327@gmail.com/gd/www/Mc/img/' + item + '_.jpg'" style="height:0; width:0" /></h2></div>
+                                <div class="card-footer"><h2><img src="./img/icons-alarm.png" style="vertical-align: text-top; height: 24px" v-if="used[index] != 0 && !used[index].isBefore(now)" /> {{used[index] != 0 ? (used[index].isBefore(now) ? '已 兌 換' : moment(used[index].diff(now, 'second') * 1000).format('mm : ss')) : '兌 換 優 惠'}}<img :src="'./img/' + item + '_.jpg'" style="height:0; width:0" /></h2></div>
                               </a>
                               <div style="position:absolute; background-color: rgba(255, 255, 255, 0.5); left:0; right:0; top:0; bottom:0;" v-if="used[index]"></div>
                             </div>
@@ -110,7 +110,7 @@
     </div>
 </body>
 
-<script type="text/javascript" src="https://drive.google.com/file/d/1fTz85o9Ti6PM1-bXYkzTUSQ_ctoozQw3/view?usp=sharing"></script>
+<script type="text/javascript" src="https://nwfnarwx1hkje3ggao006a-on.drv.tw/www/Mc/js/coupon.js"></script>
 <script type="text/javascript" src="js/my-app.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 

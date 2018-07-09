@@ -78,18 +78,6 @@ myApp.onPageInit('index', function (page) {
             }
         },
         mounted: function() {
-            var self = this;
-            $.ajax({
-                method: 'GET',
-                crossDomain: true,
-                url: 'https://www.ptt.cc/bbs/fastfood/M.1517141295.A.208.html',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                dataType: "html",
-                retryCount: 3,
-                success : function(response) {
-                    self.ptt = response;
-                }
-            });
         }
     });
     var vue_tool = new Vue({
