@@ -4,7 +4,7 @@
     <description></description>
     <author email="bluewhite0327@gmail.com" href="https://www.facebook.com/andycg0327"></author>
     <content src="index.html" />
-    <preference name="phonegap-version" value="cli-9.0.0" />
+    <preference name="phonegap-version" value="cli-6.0.1" />
     <preference name="pgb-builder-version" value="2" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="SplashScreenDelay" value="0"/>
@@ -22,7 +22,7 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
-        <preference name="android-minSdkVersion" value="19" />
+        <preference name="android-minSdkVersion" value="14" />
         <preference name="android-windowSoftInputMode" value="adjustResize" />
         <preference name="BackgroundColor" value="0xff795548"/>
         <!--<icon src="www/res/icon/android/mipmap-ldpi/ic_launcher.png" density="ldpi" />
