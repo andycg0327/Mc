@@ -4,7 +4,7 @@
     <description></description>
     <author email="bluewhite0327@gmail.com" href="https://www.facebook.com/andycg0327"></author>
     <content src="index.html" />
-    <preference name="phonegap-version" value="cli-7.0.0" />
+    <preference name="phonegap-version" value="cli-6.5.0" />
     <preference name="pgb-builder-version" value="2" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="SplashScreenDelay" value="0"/>
