@@ -25,12 +25,12 @@
         <preference name="android-minSdkVersion" value="14" />
         <preference name="android-windowSoftInputMode" value="adjustResize" />
         <preference name="BackgroundColor" value="0xff795548"/>
-        <icon src="www/res/icon/android/mipmap-ldpi/ic_launcher.png" density="ldpi" />
+        <!--<icon src="www/res/icon/android/mipmap-ldpi/ic_launcher.png" density="ldpi" />
         <icon src="www/res/icon/android/mipmap-mdpi/ic_launcher.png" density="mdpi" />
         <icon src="www/res/icon/android/mipmap-hdpi/ic_launcher.png" density="hdpi" />
         <icon src="www/res/icon/android/mipmap-xhdpi/ic_launcher.png" density="xhdpi" />
         <icon src="www/res/icon/android/mipmap-xxhdpi/ic_launcher.png" density="xxhdpi" />
-        <icon src="www/res/icon/android/mipmap-xxxhdpi/ic_launcher.png" density="xxxhdpi" />
+        <icon src="www/res/icon/android/mipmap-xxxhdpi/ic_launcher.png" density="xxxhdpi" />-->
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
