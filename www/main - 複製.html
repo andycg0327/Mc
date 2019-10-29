@@ -1,0 +1,28 @@
+<div data-page="main" class="page navbar-fixed">
+    <!-- Top Navbar-->
+    <div class="navbar">
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a class="link back" href="index.html" data-force="true">
+            <i class="icon icon-back"></i>
+            <span class="ios-only"></span>
+          </a>
+        </div>
+        <div class="title">優惠券</div>
+        <div class="right"><h6>搜尋附近餐廳　</h6></div>
+      </div>
+    </div>
+    <!-- Scrollable page content -->
+    <div class="page-content">
+      <div style="background-image:url(./img/背景.jpg); background-size: cover; background-position: center; height:100%; padding: 0 5px">
+        <div id="bubble" style="background-image: url(./img/氣泡.png);/* height: 30%; */background-size: cover; background-size: contain;background-position: center center;width: 50%;position: fixed;top: 30%;right: 10%;">
+            <h1 style="color: red;text-align: center;">大麥克</h1>
+        </div>
+        <img :src="'./img/' + title + '.png'" class="centered-block" style="width: 60%;top: 45%;"></div>
+        <button class="button" style="width: 100%; height:60px; left:0; bottom: 10px; position:absolute" @click="openConfirm()"></button>
+        <div style="background-color: #f5aa0a; width: 100%; height:80px; left:0; bottom: 0; position:absolute; text-align: center; color: #FFF" v-if="countDown < 120000">
+            <h1 style="margin-top: 20px; margin-bottom: 0"><img src="img/clock.png" style="height:32px; vertical-align:middle" /> 優惠倒數 {{moment(countDown).format('mm : ss')}}</h1>
+        </div>
+      </div>
+    </div>
+</div>

@@ -52,22 +52,22 @@
                         <a href="#" class="link smart-select active" data-page-title="顯示設定" data-back-text="返回" data-back-on-select="true">
                             <select v-model="selection" multiple maxlength="4" v-if="coupons">
                                 <optgroup label="低價購">
-                                    <option v-for="s in coupons[0]" :value="s[0]">{{s[1]}}</option>
+                                    <option v-for="s in coupons[0]" :value="s">{{s[1]}}</option>
                                 </optgroup>
                                 <optgroup label="買一送一">
-                                    <option v-for="s in coupons[1]" :value="s[0]">{{s[1]}}</option>
+                                    <option v-for="s in coupons[1]" :value="s">{{s[1]}}</option>
                                 </optgroup>
                                 <optgroup label="買A送B">
-                                    <option v-for="s in coupons[2]" :value="s[0]">{{s[1]}}</option>
+                                    <option v-for="s in coupons[2]" :value="s">{{s[1]}}</option>
                                 </optgroup>
                                 <optgroup label="(過期) 低價購">
-                                    <option v-for="s in expired[0]" :value="s[0]">{{s[1]}}</option>
+                                    <option v-for="s in expired[0]" :value="s">{{s[1]}}</option>
                                 </optgroup>
                                 <optgroup label="(過期) 買一送一">
-                                    <option v-for="s in expired[1]" :value="s[0]">{{s[1]}}</option>
+                                    <option v-for="s in expired[1]" :value="s">{{s[1]}}</option>
                                 </optgroup>
                                 <optgroup label="(過期) 買A送B">
-                                    <option v-for="s in expired[2]" :value="s[0]">{{s[1]}}</option>
+                                    <option v-for="s in expired[2]" :value="s">{{s[1]}}</option>
                                 </optgroup>
                             </select>
                             <h6>使用說明</h6>
@@ -87,14 +87,14 @@
                         <div class="tabs">
                           <div id="tab1" class="page-content tab active">
                             <div class="card demo-card-header-pic" v-for="(item, index) in selection">
-                              <a :href="'main.html?title=' + item + '&index=' + index">
-                                <div class="card-header" :style="'background-image:url(./img/' + item + '.jpg); padding:0'"></div>
+                              <a :href="'main.html?title=' + item[0] + '&index=' + index + '&desc=' + item[2] + '&type=' + item[3]">
+                                <div class="card-header" :style="'background-image:url(./img/' + item[0] + '.jpg); padding:0'"></div>
                                 <div class="card-content card-content-padding">
                                   期限：{{moment().add(Math.min(3 - index, 2), 'days').format('YYYY 年 M 月 D 日')}} 尚餘：
                                   {{used[index] == 0 ? moment(moment().add(Math.min(3 - index, 2), 'days').format('YYYY-MM-DD 23:59:59')).diff(moment(), 'day') : 0}} 天 
                                   {{used[index] == 0 ? moment(moment().add(1, 'days').format('YYYY-MM-DD')).diff(moment(), 'hour') + 1 : 0}} 小時
                                 </div>
-                                <div class="card-footer"><h2><img src="./img/icons-alarm.png" style="vertical-align: text-top; height: 24px" v-if="used[index] != 0 && !used[index].isBefore(now)" /> {{used[index] != 0 ? (used[index].isBefore(now) ? '已 兌 換' : moment(used[index].diff(now, 'second') * 1000).format('mm : ss')) : '兌 換 優 惠'}}<img :src="'./img/' + item + '_.jpg'" style="height:0; width:0" /></h2></div>
+                                <div class="card-footer"><h2><img src="./img/icons-alarm.png" style="vertical-align: text-top; height: 24px" v-if="used[index] != 0 && !used[index].isBefore(now)" /> {{used[index] != 0 ? (used[index].isBefore(now) ? '已 兌 換' : moment(used[index].diff(now, 'second') * 1000).format('mm : ss')) : '兌 換 優 惠'}}<img :src="'./img/' + item[0] + '_.jpg'" style="height:0; width:0" /></h2></div>
                               </a>
                               <div style="position:absolute; background-color: rgba(255, 255, 255, 0.5); left:0; right:0; top:0; bottom:0;" v-if="used[index]"></div>
                             </div>
@@ -110,7 +110,8 @@
     </div>
 </body>
 
-<script type="text/javascript" src="http://shh.tw/mc/js/coupon.js"></script>
+<!--<script type="text/javascript" src="http://shh.tw/mc/js/coupon.js"></script>-->
+<script type="text/javascript" src="js/coupon.js"></script>
 <script type="text/javascript" src="js/my-app.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 

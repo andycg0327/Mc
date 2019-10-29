@@ -14,11 +14,21 @@
     </div>
     <!-- Scrollable page content -->
     <div class="page-content">
-      <div :style="'background-image:url(./img/' + title + '_.jpg); background-size: cover; background-position: center; height:100%; padding: 0 5px'">
-        <button class="button" style="width: 100%; height:60px; left:0; bottom: 10px; position:absolute" @click="openConfirm()"></button>
+        <div :style="'background-image:url(./img/背景' + type + '.jpg); background-size: cover; background-position: center; height:100%; padding: 0 5px'">
+        
+            <h1 style="color: white;top: 25%;left: 10%;position: fixed;font-weight: normal;font-size: x-large;">{{desc}}</h1>
+            <img :src="'./img/' + title + '_.png'" class="centered-block" style="width: 45%;top: 30%;margin-left: 20%;">
+            <img :src="'./img/' + title + '.png'" class="centered-block" style="width: 55%;top: 48%;filter: drop-shadow(-20px 30px 10px #00000050);">
+            <div style="bottom: 0;margin-bottom: 20%;position: fixed;width: 100%;" >
+                <p style="color: white;text-align: center;margin-top: 2px;font-size: 10px;margin-bottom: 2px;">1.本優惠券適用於上午10:30至凌晨3:00，部分餐廳恕未供應</p>
+                <p style="color: white;text-align: center;margin-top: 2px;font-size: 10px;margin-bottom: 2px;">2.單筆交易限用一張優惠券且不得併用其他優惠</p>
+                <p style="color: white;text-align: center;margin-top: 2px;font-size: 10px;margin-bottom: 2px;">3.圖片僅供參考，供應時間及口味以各麥當勞餐廳實際供應為準</p>
+                <p style="color: white;text-align: center;margin-top: 2px;font-size: 10px;margin-bottom: 2px;">4.詳見麥當勞官網</p>
+            </div>
+        </div>
+        <button class="button" style="width: 98%; height:60px; left:0; bottom: 5px; position:absolute; background-color: #f6aa09;color: white;font-size: 28px;left: 1%;" @click="openConfirm()">兌換優惠</button>
         <div style="background-color: #f5aa0a; width: 100%; height:80px; left:0; bottom: 0; position:absolute; text-align: center; color: #FFF" v-if="countDown < 120000">
             <h1 style="margin-top: 20px; margin-bottom: 0"><img src="img/clock.png" style="height:32px; vertical-align:middle" /> 優惠倒數 {{moment(countDown).format('mm : ss')}}</h1>
         </div>
-      </div>
     </div>
 </div>

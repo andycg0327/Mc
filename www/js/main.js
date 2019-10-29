@@ -4,6 +4,8 @@ myApp.onPageInit('main', function (page) {
         data: {
             moment: moment,
             title: page.query.title,
+            desc: page.query.desc,
+            type: page.query.type,
             countDown: 120000
         },
         methods: {
@@ -25,6 +27,9 @@ myApp.onPageInit('main', function (page) {
                     }]
                 });
             }
+        },
+        mounted: function() {
+            $("#bubble").height($("#bubble").width());
         }
     });
 });

@@ -73,8 +73,8 @@ myApp.onPageInit('index', function (page) {
         },
         watch: {
             selection: function (val) {
-                globalData.selection = this.selection;
-                vue.selection = this.selection;
+                globalData.selection = val;
+                vue.selection = val;
             }
         },
         mounted: function() {
